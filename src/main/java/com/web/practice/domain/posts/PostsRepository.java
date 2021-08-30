@@ -9,4 +9,8 @@ public interface PostsRepository extends JpaRepository<Posts,Long> {
 
     @Query("SELECT p FROM Posts p ORDER BY p.id DESC")
     List<Posts> findAllDesec();
+
+    //repository의 by = sql의 where
+    //containing = where
+    List<Posts> findByTitleContaining(String keyword);
 }

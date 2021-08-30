@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -42,6 +43,13 @@ public class PostsService {
         Posts entity = postsRepository.findById(id)
                 .orElseThrow(()->new IllegalArgumentException("no such posts. id="+id));
         return new PostsResponseDto(entity);
+    }
+
+    @Transactional
+    public List<PostsListResponseDto> search(String keyword){
+        return postsRepository.findByTitleContaining(keyword).stream()
+                .map(PostsListResponseDto::new)
+                .collect(Collectors.toList());
     }
 
     @Transactional(readOnly = true)

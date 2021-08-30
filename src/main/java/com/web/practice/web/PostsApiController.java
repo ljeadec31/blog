@@ -1,6 +1,7 @@
 package com.web.practice.web;
 
 import com.web.practice.service.posts.PostsService;
+import com.web.practice.web.dto.BoardSearchDto;
 import com.web.practice.web.dto.PostsResponseDto;
 import com.web.practice.web.dto.PostsSaveRequestDto;
 import com.web.practice.web.dto.PostsUpdateRequestDto;
